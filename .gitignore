@@ -1,0 +1,37 @@
+# Java
+*.class
+*.jar
+*.war
+
+# Gradle
+.gradle/
+build/
+**/build/
+gradle-app.setting
+
+# IDE configuration files
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Minecraft development files
+*.minecraft/
+*.mcmeta
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
