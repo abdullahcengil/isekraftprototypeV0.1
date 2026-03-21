@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["ILI"],
+  "key": {
+    "I": {"item": "minecraft:iron_nugget"},
+    "L": {"item": "minecraft:lapis_lazuli"}
+  },
+  "result": {"item": "isekraft:rune_fragment", "count": 2}
+}

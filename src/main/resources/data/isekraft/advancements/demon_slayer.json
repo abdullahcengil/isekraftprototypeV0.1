@@ -1,0 +1,17 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:demon_lord_crown"},
+    "title": {"text": "☠ Demon Slayer"},
+    "description": {"text": "Defeat the Shadow Demon."},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "isekraft:goblin_slayer",
+  "criteria": {
+    "kill_shadow_demon": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {"entity": {"type": "isekraft:shadow_demon"}}
+    }
+  }
+}

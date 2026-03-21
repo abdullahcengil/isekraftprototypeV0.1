@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:mana_crystal"},
+    "title": {"text": "☽ Witch Hunter"},
+    "description": {"text": "Slay all three members of the Witch Coven."},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "isekraft:goblin_slayer",
+  "criteria": {
+    "kill_morvaine": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {"entity": {"type": "isekraft:witch_coven"}}
+    }
+  },
+  "requirements": [["kill_morvaine"]]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["RDR","DSD","RDR"],
+  "key": {
+    "R": {"item": "isekraft:rune_fragment"},
+    "D": {"item": "minecraft:diamond"},
+    "S": {"item": "isekraft:soul_crystal"}
+  },
+  "result": {"item": "isekraft:kirin", "count": 1}
+}

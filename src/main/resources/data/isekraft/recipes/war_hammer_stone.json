@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["HH","HH"," S"," S"],
+  "key": {
+    "H": {"item": "minecraft:cobblestone"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {"item": "isekraft:war_hammer_stone", "count": 1}
+}

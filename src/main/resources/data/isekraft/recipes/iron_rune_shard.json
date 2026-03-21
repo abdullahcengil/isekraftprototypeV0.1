@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["ILI"],
+  "key": {
+    "I": {"item": "minecraft:iron_ingot"},
+    "L": {"item": "minecraft:lapis_lazuli"}
+  },
+  "result": {"item": "isekraft:iron_rune_shard","count": 4}
+}

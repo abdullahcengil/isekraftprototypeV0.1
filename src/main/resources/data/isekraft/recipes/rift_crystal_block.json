@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "isekraft:soul_crystal"}, {"item": "isekraft:soul_crystal"}, {"item": "isekraft:soul_crystal"},
+    {"item": "isekraft:soul_crystal"}, {"item": "isekraft:soul_crystal"}, {"item": "isekraft:soul_crystal"},
+    {"item": "isekraft:soul_crystal"}, {"item": "isekraft:soul_crystal"}, {"item": "isekraft:soul_crystal"}
+  ],
+  "result": {"item": "isekraft:rift_crystal_block", "count": 1}
+}

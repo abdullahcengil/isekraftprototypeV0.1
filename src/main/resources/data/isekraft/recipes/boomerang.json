@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["SI","I "],
+  "key": {
+    "S": {"item": "minecraft:stick"},
+    "I": {"item": "isekraft:steel_ingot"}
+  },
+  "result": {"item": "isekraft:boomerang", "count": 1}
+}

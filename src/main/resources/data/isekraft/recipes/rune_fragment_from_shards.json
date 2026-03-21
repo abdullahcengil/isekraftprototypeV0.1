@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item":"isekraft:iron_rune_shard"},{"item":"isekraft:iron_rune_shard"},
+    {"item":"isekraft:iron_rune_shard"},{"item":"isekraft:iron_rune_shard"}
+  ],
+  "result": {"item": "isekraft:rune_fragment","count": 1}
+}

@@ -1,0 +1,17 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:rune_sword"},
+    "title": {"text": "Wandering Hero"},
+    "description": {"text": "Reach level 10 in IseKraft RPG."},
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "isekraft:root",
+  "criteria": {
+    "has_arcane_staff": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": ["isekraft:arcane_staff"]}]}
+    }
+  }
+}

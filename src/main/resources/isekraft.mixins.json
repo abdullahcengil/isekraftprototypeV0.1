@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.isekraft.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "PlayerEntityMixin",
+    "LivingEntityMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

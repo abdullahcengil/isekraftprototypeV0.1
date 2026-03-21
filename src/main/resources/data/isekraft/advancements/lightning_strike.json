@@ -1,0 +1,17 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:kirin"},
+    "title": {"text": "Lightning Strike"},
+    "description": {"text": "Hit an enemy with the Kirin bow."},
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "parent": "isekraft:root",
+  "criteria": {
+    "has_kirin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": ["isekraft:kirin"]}]}
+    }
+  }
+}

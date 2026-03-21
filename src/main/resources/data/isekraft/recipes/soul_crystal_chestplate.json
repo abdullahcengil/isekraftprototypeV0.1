@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["C C", "CCC", "CCC"],
+  "key": {"C": {"item": "isekraft:soul_crystal"}},
+  "result": {"item": "isekraft:soul_crystal_chestplate"}
+}

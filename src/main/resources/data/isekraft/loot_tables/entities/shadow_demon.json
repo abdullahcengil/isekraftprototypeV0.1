@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "isekraft:demon_lord_crown",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "isekraft:soul_crystal",
+          "functions": [{"function": "minecraft:set_count", "count": {"min": 8, "max": 16}}]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "isekraft:demon_core",
+          "functions": [{"function": "minecraft:set_count", "count": {"min": 4, "max": 8}}]
+        }
+      ]
+    }
+  ]
+}

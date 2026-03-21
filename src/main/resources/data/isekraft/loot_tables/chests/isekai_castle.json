@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {"min": 3, "max": 5},
+      "entries": [
+        {"type":"minecraft:item","name":"isekraft:soul_crystal","weight":20,
+          "functions":[{"function":"minecraft:set_count","count":{"min":1,"max":3}}]},
+        {"type":"minecraft:item","name":"isekraft:rune_fragment","weight":25,
+          "functions":[{"function":"minecraft:set_count","count":{"min":2,"max":5}}]},
+        {"type":"minecraft:item","name":"isekraft:spirit_essence","weight":10,
+          "functions":[{"function":"minecraft:set_count","count":{"min":1,"max":2}}]},
+        {"type":"minecraft:item","name":"isekraft:demon_core","weight":4,
+          "functions":[{"function":"minecraft:set_count","count":1}]},
+        {"type":"minecraft:item","name":"isekraft:mana_crystal","weight":15,
+          "functions":[{"function":"minecraft:set_count","count":{"min":1,"max":3}}]},
+        {"type":"minecraft:item","name":"isekraft:shuriken","weight":12,
+          "functions":[{"function":"minecraft:set_count","count":{"min":2,"max":6}}]},
+        {"type":"minecraft:item","name":"minecraft:diamond","weight":8,
+          "functions":[{"function":"minecraft:set_count","count":{"min":1,"max":2}}]},
+        {"type":"minecraft:item","name":"minecraft:golden_apple","weight":6,
+          "functions":[{"function":"minecraft:set_count","count":{"min":1,"max":2}}]},
+        {"type":"minecraft:item","name":"minecraft:enchanted_book","weight":5,
+          "functions":[{"function":"minecraft:enchant_randomly"}]},
+        {"type":"minecraft:empty","weight":10}
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {"type":"minecraft:item","name":"isekraft:rune_sword","weight":6,
+          "functions":[{"function":"minecraft:enchant_with_levels","levels":{"min":10,"max":20}}]},
+        {"type":"minecraft:item","name":"isekraft:berserker_sword","weight":3},
+        {"type":"minecraft:item","name":"isekraft:arcane_staff","weight":4},
+        {"type":"minecraft:item","name":"isekraft:war_hammer_diamond","weight":2},
+        {"type":"minecraft:item","name":"isekraft:soul_crystal_helmet","weight":4,
+          "functions":[{"function":"minecraft:enchant_with_levels","levels":{"min":5,"max":15}}]},
+        {"type":"minecraft:item","name":"isekraft:soul_crystal_chestplate","weight":3,
+          "functions":[{"function":"minecraft:enchant_with_levels","levels":{"min":5,"max":15}}]},
+        {"type":"minecraft:item","name":"isekraft:demon_king_helmet","weight":1},
+        {"type":"minecraft:empty","weight":10}
+      ]
+    }
+  ]
+}

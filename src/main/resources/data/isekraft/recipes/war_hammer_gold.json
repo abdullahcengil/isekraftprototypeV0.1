@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["HH","HH"," S"," S"],
+  "key": {
+    "H": {"item": "minecraft:gold_ingot"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {"item": "isekraft:war_hammer_gold", "count": 1}
+}

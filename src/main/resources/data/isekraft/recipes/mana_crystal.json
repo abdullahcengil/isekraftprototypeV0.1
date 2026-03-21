@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["ABA","BAB","ABA"],
+  "key": {
+    "A": {"item": "minecraft:amethyst_shard"},
+    "B": {"item": "minecraft:blue_dye"}
+  },
+  "result": {"item": "isekraft:mana_crystal","count": 2}
+}

@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:demon_core"},
+    "title": {"text": "Goblin Slayer"},
+    "description": {"text": "Defeat the Goblin King."},
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "isekraft:first_blood",
+  "criteria": {
+    "kill_goblin_king": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {"type": "isekraft:goblin_king"}
+      }
+    }
+  }
+}

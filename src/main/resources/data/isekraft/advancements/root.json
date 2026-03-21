@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:rune_sword"},
+    "title": {"text": "✦ IseKraft RPG"},
+    "description": {"text": "Begin your isekai journey."},
+    "frame": "task",
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_recipe_guide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": ["isekraft:recipe_guide"]}]}
+    }
+  }
+}

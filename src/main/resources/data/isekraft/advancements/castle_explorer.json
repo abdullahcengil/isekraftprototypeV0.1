@@ -1,0 +1,17 @@
+{
+  "display": {
+    "icon": {"item": "minecraft:chest"},
+    "title": {"text": "Castle Explorer"},
+    "description": {"text": "Open a chest in an Isekai Castle."},
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "parent": "isekraft:root",
+  "criteria": {
+    "open_castle_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": ["isekraft:soul_crystal"]}]}
+    }
+  }
+}

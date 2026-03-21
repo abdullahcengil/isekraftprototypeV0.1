@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["III"],
+  "key": {"I": {"item": "minecraft:iron_ingot"}},
+  "result": {"item": "isekraft:steel_ingot", "count": 1}
+}

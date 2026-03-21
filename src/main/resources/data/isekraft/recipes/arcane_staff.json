@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["R", "B", "S"],
+  "key": {
+    "R": {"item": "isekraft:rune_fragment"},
+    "B": {"item": "minecraft:blaze_rod"},
+    "S": {"item": "isekraft:soul_crystal"}
+  },
+  "result": {"item": "isekraft:arcane_staff", "count": 1}
+}

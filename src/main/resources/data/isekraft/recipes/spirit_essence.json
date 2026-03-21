@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["FSF", "SCS", "FSF"],
+  "key": {
+    "F": {"item": "minecraft:feather"},
+    "S": {"item": "minecraft:soul_sand"},
+    "C": {"item": "isekraft:soul_crystal"}
+  },
+  "result": {"item": "isekraft:spirit_essence", "count": 2}
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item":"isekraft:demon_core"},{"item":"minecraft:flint"}
+  ],
+  "result": {"item": "isekraft:demon_dust","count": 4}
+}

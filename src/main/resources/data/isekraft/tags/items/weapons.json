@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "isekraft:rune_sword",
+    "isekraft:berserker_sword",
+    "isekraft:war_hammer_wood",
+    "isekraft:war_hammer_stone",
+    "isekraft:war_hammer_iron",
+    "isekraft:war_hammer_gold",
+    "isekraft:war_hammer_diamond",
+    "isekraft:kirin",
+    "isekraft:soul_bow",
+    "isekraft:arcane_staff"
+  ]
+}

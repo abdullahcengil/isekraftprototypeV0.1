@@ -1,0 +1,17 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:overlord_seal"},
+    "title": {"text": "★ Isekai Overlord ★"},
+    "description": {"text": "Reach level 100 and claim the title of Isekai Overlord."},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "isekraft:demon_slayer",
+  "criteria": {
+    "has_seal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": ["isekraft:overlord_seal"]}]}
+    }
+  }
+}

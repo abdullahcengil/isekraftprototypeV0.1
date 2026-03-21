@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" RS", "R S", " RS"],
+  "key": {
+    "R": {"item": "isekraft:rune_fragment"},
+    "S": {"item": "minecraft:string"}
+  },
+  "result": {"item": "isekraft:soul_bow", "count": 1}
+}

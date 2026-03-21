@@ -1,0 +1,17 @@
+{
+  "display": {
+    "icon": {"item": "isekraft:spirit_essence"},
+    "title": {"text": "Spirit Tamer"},
+    "description": {"text": "Tame a Spirit Beast companion."},
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "isekraft:root",
+  "criteria": {
+    "tame_beast": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {}
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "isekraft",
+  "version": "${version}",
+  "name": "IseKraft RPG",
+  "description": "A fantasy RPG isekai mod. Level up, fight bosses, find castles, tame beasts.",
+  "authors": ["IseKraft Team"],
+  "contact": {
+    "sources": "https://github.com/isekraft/isekraft-mod"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main":   ["com.isekraft.IseKraftMod"],
+    "client": ["com.isekraft.IseKraftClient"]
+  },
+  "mixins": ["isekraft.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api":   "*",
+    "minecraft":    "~1.20.1",
+    "java":         ">=17"
+  }
+}
