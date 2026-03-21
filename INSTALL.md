@@ -11,8 +11,8 @@
 
 ## Option A — Install the pre-built jar (easiest)
 
-1. Download `isekraft-1.1.0.jar` from the [Releases page](../../releases)
-2. Download `fabric-api-xxxx+1.20.1.jar` from [Fabric API](https://modrinth.com/mod/fabric-api)
+1. Download `isekraftV0.1.jar` from the [Releases page](../../releases)
+2. Download `fabric-api-0.92.7+1.20.1.jar` from [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Put both jars into your mods folder:
    - Press `Win + R`, type `%appdata%\.minecraft\mods`, press Enter
    - That opens the mods folder directly
