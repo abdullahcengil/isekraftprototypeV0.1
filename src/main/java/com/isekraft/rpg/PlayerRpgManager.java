@@ -2,6 +2,8 @@ package com.isekraft.rpg;
 
 import com.isekraft.IseKraftMod;
 import com.isekraft.item.ModItems;
+import com.isekraft.equipment.EquipmentManager;
+import com.isekraft.quest.QuestManager;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -349,6 +351,10 @@ public class PlayerRpgManager {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE,400, 0, true, false));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION,   400, 0, true, false));
         }
+
+        // Equipment: auto-equip upgrades + apply stat bonuses from all 3 slots
+        EquipmentManager.autoEquipBest(player);
+        EquipmentManager.applyEquipmentStats(player);
     }
 
     // ── NBT ───────────────────────────────────────────────────────────────────
@@ -388,6 +394,7 @@ public class PlayerRpgManager {
         p.networkHandler.sendPacket(new SubtitleS2CPacket(
             Text.literal("Level " + lv + " — " + getLevelTitle(lv)).formatted(Formatting.YELLOW)));
         p.sendMessage(Text.literal("★ Level " + lv + " — " + getLevelTitle(lv)).formatted(Formatting.GOLD), false);
+        QuestManager.onLevelUp(p, lv);
 
         if (lv % 5 == 0 && lv < MAX_LEVEL)
             p.sendMessage(Text.literal("✦ New skill point! Press K to open Skill Tree.")

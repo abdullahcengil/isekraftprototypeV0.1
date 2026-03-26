@@ -27,6 +27,7 @@
   "death.attack.isekraft.magic": "%1$s was obliterated by arcane magic",
   "item.isekraft.berserker_sword": "Berserker Sword",
   "item.isekraft.god_sword": "⚡ God Sword [ADMIN]",
+  "item.isekraft.rarity_codex": "Rarity Codex",
   "item.isekraft.recipe_guide": "✦ IseKraft Recipe Guide",
   "item.isekraft.soul_bow": "Soul Bow",
   "item.isekraft.demon_lord_crown": "Demon Lord Crown",
@@ -57,5 +58,15 @@
   "entity.isekraft.lightning_arrow": "Lightning Arrow",
   "entity.isekraft.shuriken_projectile": "Shuriken",
   "item.isekraft.boomerang": "Boomerang",
-  "entity.isekraft.boomerang_projectile": "Boomerang"
+  "entity.isekraft.boomerang_projectile": "Boomerang",
+  "item.isekraft.iron_gauntlet": "Iron Gauntlet",
+  "item.isekraft.steel_gauntlet": "Steel Gauntlet",
+  "item.isekraft.shadow_gauntlet": "Shadow Gauntlet",
+  "item.isekraft.bone_pendant": "Bone Pendant",
+  "item.isekraft.soul_pendant": "Soul Pendant",
+  "item.isekraft.demon_pendant": "Demon Pendant",
+  "item.isekraft.copper_ring": "Copper Ring",
+  "item.isekraft.rune_ring": "Rune Ring",
+  "item.isekraft.overlord_ring": "Overlord Ring",
+  "entity.isekraft.gilgamesh": "Gilgamesh"
 }

@@ -4,6 +4,8 @@ import com.isekraft.entity.ModEntities;
 import com.isekraft.entity.OverlordGuardEntity;
 import com.isekraft.entity.WitchCovenEntity;
 import com.isekraft.rpg.PlayerRpgManager;
+import com.isekraft.quest.QuestManager;
+import net.minecraft.registry.Registries;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -20,6 +22,8 @@ public class KillEventHandler {
             if (!(killedEntity instanceof MobEntity mob)) return;
             int mobLevel = estimateLevel(mob);
             PlayerRpgManager.recordKill(player, mobLevel);
+            String typeId = Registries.ENTITY_TYPE.getId(mob.getType()).toString();
+            QuestManager.onKill(player, typeId);
         });
     }
 

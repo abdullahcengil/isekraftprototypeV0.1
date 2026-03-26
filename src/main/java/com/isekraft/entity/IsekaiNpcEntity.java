@@ -56,23 +56,27 @@ public class IsekaiNpcEntity extends PathAwareEntity {
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
         if (!getWorld().isClient && player instanceof ServerPlayerEntity sp) {
             int level = PlayerRpgManager.getLevel(player);
             String title = PlayerRpgManager.getLevelTitle(level);
-            sp.sendMessage(Text.literal("[" + npcName + "]: Ah, the " + title + "! " + getDialogue(level, player))
-                .formatted(Formatting.AQUA), false);
 
+            // XP blessing on cooldown
             long now = getWorld().getTime();
             if (lastInteract < 0 || (now - lastInteract) > COOLDOWN) {
                 int xp = 25 + (level * 5);
                 PlayerRpgManager.addXp(player, xp);
-                sp.sendMessage(Text.literal("[" + npcName + "]: Take this blessing! +" + xp + " XP")
-                    .formatted(Formatting.YELLOW), false);
+                sp.sendMessage(Text.literal("[" + npcName + "]: Ah, " + title + "! I have quests for you. +" + xp + " XP for visiting.")
+                    .formatted(Formatting.AQUA), false);
                 lastInteract = now;
                 getWorld().playSound(null, getBlockPos(),
                     SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.NEUTRAL, 1f, 1f);
+            } else {
+                sp.sendMessage(Text.literal("[" + npcName + "]: Check the board, " + title + ".")
+                    .formatted(Formatting.AQUA), false);
             }
-            ModPackets.sendNpcDialoguePacket(sp, npcName, level);
+            // Open interactive quest board on the client
+            com.isekraft.network.ModPackets.sendQuestBoardPacket(sp, npcName);
         }
         return ActionResult.SUCCESS;
     }

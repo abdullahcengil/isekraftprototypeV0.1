@@ -166,38 +166,36 @@ public class BattleTowerGenerator {
     }
 
     private static void addFloorBlocks(BlockPos base, int floor, int yBase, List<BlockPlacement> out) {
+        // Spawner at centre of each floor room (floors 0-5), chest on alternate floors
+        // NO traps — removed entirely (were broken and annoying)
         BlockPos spawnerPos = base.add(WIDTH / 2, yBase + 2, WIDTH / 2);
         BlockPos chestPos   = base.add(WIDTH - 2, yBase + 1, WIDTH - 2);
         switch (floor) {
-            case 0 -> out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
+            case 0 -> {
+                out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
+            }
             case 1 -> {
                 out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
                 out.add(new BlockPlacement(chestPos,   Blocks.CHEST.getDefaultState()));
-                out.add(new BlockPlacement(base.add(WIDTH / 2, yBase - 1, WIDTH / 2 + 2), Blocks.TNT.getDefaultState()));
-                out.add(new BlockPlacement(base.add(WIDTH / 2, yBase,     WIDTH / 2 + 2), Blocks.STONE_PRESSURE_PLATE.getDefaultState()));
             }
-            case 2 -> out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
+            case 2 -> {
+                out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
+            }
             case 3 -> {
                 out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
                 out.add(new BlockPlacement(chestPos,   Blocks.CHEST.getDefaultState()));
-                out.add(new BlockPlacement(base.add(2, yBase + 1, WIDTH / 2), Blocks.TRIPWIRE_HOOK.getDefaultState()));
-                out.add(new BlockPlacement(base.add(6, yBase + 1, WIDTH / 2), Blocks.TRIPWIRE_HOOK.getDefaultState()));
-                for (int dx = 3; dx <= 5; dx++)
-                    out.add(new BlockPlacement(base.add(dx, yBase + 1, WIDTH / 2), Blocks.TRIPWIRE.getDefaultState()));
-                out.add(new BlockPlacement(base.add(WIDTH / 2, yBase + 2, WIDTH / 2 + 1), Blocks.TNT.getDefaultState()));
             }
             case 4 -> {
-                out.add(new BlockPlacement(spawnerPos,                    Blocks.SPAWNER.getDefaultState()));
-                out.add(new BlockPlacement(base.add(2, yBase + 2, 2),    Blocks.SPAWNER.getDefaultState()));
+                out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
+                out.add(new BlockPlacement(base.add(2, yBase + 2, 2), Blocks.SPAWNER.getDefaultState()));
             }
             case 5 -> {
                 out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
                 out.add(new BlockPlacement(chestPos,   Blocks.CHEST.getDefaultState()));
             }
             case 6 -> {
-                out.add(new BlockPlacement(base.add(3, yBase + 1, 3), Blocks.SOUL_SAND.getDefaultState()));
-                out.add(new BlockPlacement(base.add(5, yBase + 1, 5), Blocks.SOUL_SAND.getDefaultState()));
-                out.add(new BlockPlacement(chestPos, Blocks.CHEST.getDefaultState()));
+                out.add(new BlockPlacement(spawnerPos, Blocks.SPAWNER.getDefaultState()));
+                out.add(new BlockPlacement(chestPos,   Blocks.CHEST.getDefaultState()));
             }
             case 7 -> out.add(new BlockPlacement(chestPos, Blocks.CHEST.getDefaultState()));
         }
@@ -227,25 +225,38 @@ public class BattleTowerGenerator {
 
         // Per-floor entities
         EntityType<?>[] spawnerTypes = {
-            ModEntities.FOREST_WOLF,  // floor 0
+            ModEntities.FOREST_WOLF,  // floor 0 — basic wolf
             ModEntities.DARK_KNIGHT,  // floor 1
             ModEntities.DARK_KNIGHT,  // floor 2
             ModEntities.DARK_KNIGHT,  // floor 3
             ModEntities.DARK_KNIGHT,  // floor 4 (two spawners)
             ModEntities.DARK_KNIGHT,  // floor 5
-            null,                      // floor 6
-            null,                      // floor 7
+            ModEntities.DARK_KNIGHT,  // floor 6 — now has spawner
+            null,                      // floor 7 — boss room, no auto spawner
         };
         boolean[] hasChest = { false, true, false, true, false, true, true, true };
 
         for (int floor = 0; floor < FLOORS; floor++) {
             int yBase = floor * FLOOR_H;
-            if (spawnerTypes[floor] != null)
-                trySpawner(world, base.add(WIDTH / 2, yBase + 2, WIDTH / 2), spawnerTypes[floor], random, chunkBox);
-            if (hasChest[floor])
-                tryChest(world, base.add(WIDTH - 2, yBase + 1, WIDTH - 2), random, chunkBox);
-            if (floor == 4)
-                trySpawner(world, base.add(2, yBase + 2, 2), ModEntities.DARK_KNIGHT, random, chunkBox);
+            BlockPos spawnerPos = base.add(WIDTH / 2, yBase + 2, WIDTH / 2);
+            // Place spawner block again with NOTIFY_ALL to ensure block entity init
+            if (spawnerTypes[floor] != null) {
+                world.setBlockState(spawnerPos, Blocks.SPAWNER.getDefaultState(),
+                    net.minecraft.block.Block.NOTIFY_ALL);
+                trySpawner(world, spawnerPos, spawnerTypes[floor], random, chunkBox);
+            }
+            if (hasChest[floor]) {
+                BlockPos chestPos = base.add(WIDTH - 2, yBase + 1, WIDTH - 2);
+                world.setBlockState(chestPos, Blocks.CHEST.getDefaultState(),
+                    net.minecraft.block.Block.NOTIFY_ALL);
+                tryChest(world, chestPos, random, chunkBox);
+            }
+            if (floor == 4) {
+                BlockPos extra = base.add(2, yBase + 2, 2);
+                world.setBlockState(extra, Blocks.SPAWNER.getDefaultState(),
+                    net.minecraft.block.Block.NOTIFY_ALL);
+                trySpawner(world, extra, ModEntities.DARK_KNIGHT, random, chunkBox);
+            }
         }
     }
 

@@ -1,12 +1,14 @@
 package com.isekraft;
 
 import com.isekraft.client.CharacterScreen;
+import com.isekraft.client.EquipmentInventoryScreen;
 import com.isekraft.client.IseKraftHudState;
 import com.isekraft.client.RpgHudRenderer;
 import com.isekraft.client.SkillTreeScreen;
 import com.isekraft.entity.ModEntities;
 import com.isekraft.entity.client.*;
 import com.isekraft.network.ModPackets;
+import com.isekraft.client.RarityTooltipHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.render.entity.ArrowEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
@@ -22,6 +24,7 @@ public class IseKraftClient implements ClientModInitializer {
     private static KeyBinding characterKey;
     private static KeyBinding skillTreeKey;
     private static KeyBinding buffPanelKey;
+    private static KeyBinding equipmentKey;
 
     @Override
     public void onInitializeClient() {
@@ -34,7 +37,7 @@ public class IseKraftClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.SHADOW_DEMON,   ShadowDemonRenderer::new);
         EntityRendererRegistry.register(ModEntities.WITCH_COVEN,    WitchCovenRenderer::new);
         EntityRendererRegistry.register(ModEntities.OVERLORD_GUARD, OverlordGuardRenderer::new);
-
+        EntityRendererRegistry.register(ModEntities.GILGAMESH, GilgameshRenderer::new);
         // Projectile renderers — REQUIRED or render thread crashes when these entities exist
         EntityRendererRegistry.register(ModEntities.SHURIKEN_PROJECTILE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOOMERANG_PROJECTILE, FlyingItemEntityRenderer::new);
@@ -42,6 +45,7 @@ public class IseKraftClient implements ClientModInitializer {
 
         ModPackets.registerClientPackets();
         RpgHudRenderer.register();
+        RarityTooltipHandler.register();
 
         // H — Character screen
         characterKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -56,6 +60,14 @@ public class IseKraftClient implements ClientModInitializer {
             "key.isekraft.skilltree",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_K,
+            "IseKraft RPG"
+        ));
+
+        // I — Equipment inventory
+        equipmentKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.isekraft.equipment",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_I,
             "IseKraft RPG"
         ));
 
@@ -80,6 +92,12 @@ public class IseKraftClient implements ClientModInitializer {
                 else if (client.currentScreen instanceof SkillTreeScreen)
                     client.setScreen(null);
             }
+            while (equipmentKey.wasPressed()) {
+                if (client.currentScreen == null)
+                    client.setScreen(new EquipmentInventoryScreen());
+                else if (client.currentScreen instanceof EquipmentInventoryScreen)
+                    client.setScreen(null);
+            }
             while (buffPanelKey.wasPressed()) {
                 // FIX: toggle buff panel visibility
                 IseKraftHudState.showBuffPanel = !IseKraftHudState.showBuffPanel;
@@ -87,3 +105,5 @@ public class IseKraftClient implements ClientModInitializer {
         });
     }
 }
+// EntityRendererRegistry.register(ModEntities.GILGAMESH, GilgameshRenderer::new); 
+// TODO: Gilgamesh için renderer oluşturunca açacağız

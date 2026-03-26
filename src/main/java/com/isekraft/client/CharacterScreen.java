@@ -1,6 +1,10 @@
 package com.isekraft.client;
 
 import com.isekraft.rpg.PlayerRpgManager;
+import com.isekraft.equipment.EquipmentManager;
+import com.isekraft.equipment.EquipSlot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -232,9 +236,39 @@ public class CharacterScreen extends Screen {
             Text.literal(demonDone ? "✓" : "✗").formatted(demonDone ? Formatting.GREEN : Formatting.DARK_GRAY),
             px + 205, achY, WHITE);
 
+        // ── EQUIPMENT SLOTS ───────────────────────────────────────────────────
+        int eqY = py + H - 60;
+        ctx.fill(px+10, eqY-2, px+W-10, eqY-1, RED);
+        ctx.drawTextWithShadow(textRenderer,
+            Text.literal("EQUIPMENT").formatted(Formatting.RED, Formatting.BOLD),
+            px+10, eqY+2, WHITE);
+
+        // Only fetch from server if we have a ServerPlayerEntity (integrated server / LAN)
+        net.minecraft.client.MinecraftClient mc = net.minecraft.client.MinecraftClient.getInstance();
+        if (mc.getServer() != null && player instanceof ServerPlayerEntity sp) {
+            String[] slotLabels = {"✦ Glove", "✦ Necklace", "✦ Ring"};
+            EquipSlot[] slots = EquipSlot.values();
+            for (int i = 0; i < slots.length; i++) {
+                ItemStack eq = EquipmentManager.getEquipped(sp, slots[i]);
+                int eqX = px + 10 + i * 115;
+                String label = slotLabels[i] + ": ";
+                String val = eq.isEmpty() ? "§8—" : "§f" + eq.getName().getString();
+                ctx.drawTextWithShadow(textRenderer,
+                    Text.literal(label).formatted(Formatting.GOLD),
+                    eqX, eqY + 15, WHITE);
+                ctx.drawTextWithShadow(textRenderer,
+                    Text.literal(val),
+                    eqX, eqY + 25, WHITE);
+            }
+        } else {
+            ctx.drawTextWithShadow(textRenderer,
+                Text.literal("(available in single-player / LAN)").formatted(Formatting.DARK_GRAY),
+                px+10, eqY+15, WHITE);
+        }
+
         // ── COMMANDS HINT ─────────────────────────────────────────────────────
         ctx.drawCenteredTextWithShadow(textRenderer,
-            Text.literal("/isekraft info  |  /isekraft kit  |  /isekraft summon").formatted(Formatting.DARK_GRAY),
+            Text.literal("/isekraft equipment  |  /isekraft unequip <slot>").formatted(Formatting.DARK_GRAY),
             px+W/2, py+H-28, WHITE);
 
         super.render(ctx, mx, my, delta);

@@ -4,6 +4,7 @@ import com.isekraft.entity.OverlordGuardEntity;
 
 import com.isekraft.IseKraftMod;
 import com.isekraft.entity.BoomerangEntity;
+import com.isekraft.entity.GilgameshEntity;
 import com.isekraft.entity.WitchCovenEntity;
 import com.isekraft.entity.LightningArrowEntity;
 import com.isekraft.entity.ShurikenEntity;
@@ -62,6 +63,13 @@ public class ModEntities {
         FabricEntityTypeBuilder.create(SpawnGroup.MISC, OverlordGuardEntity::new)
             .dimensions(EntityDimensions.fixed(0.6f, 1.95f)).build());
 
+    /**
+     * Gilgamesh — King of Heroes. Legendary sky island boss. Never naturally spawned.
+     */
+    public static final EntityType<GilgameshEntity> GILGAMESH = reg("gilgamesh",
+        FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, GilgameshEntity::new)
+            .dimensions(EntityDimensions.fixed(1.0f, 2.5f)).build());
+
     /** Lightning Arrow — projectile fired by Kirin bow. */
     public static final EntityType<LightningArrowEntity> LIGHTNING_ARROW = reg("lightning_arrow",
         FabricEntityTypeBuilder.<LightningArrowEntity>create(SpawnGroup.MISC, LightningArrowEntity::new)
@@ -96,6 +104,7 @@ public class ModEntities {
         FabricDefaultAttributeRegistry.register(SHADOW_DEMON,  ShadowDemonEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(WITCH_COVEN,    WitchCovenEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(OVERLORD_GUARD, OverlordGuardEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(GILGAMESH,       GilgameshEntity.createAttributes());
         // LightningArrow and ShurikenEntity are ThrownItemEntity subclasses — no attribute registration needed.
 
         // Spawn restrictions

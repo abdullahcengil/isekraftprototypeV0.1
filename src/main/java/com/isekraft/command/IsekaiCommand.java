@@ -7,6 +7,10 @@ import com.isekraft.item.ModItems;
 import com.isekraft.rpg.PlayerRpgManager;
 import com.isekraft.world.BattleTowerGenerator;
 import com.isekraft.world.DemonLordEvent;
+import com.isekraft.rarity.RarityCodexItem;
+import com.isekraft.equipment.EquipmentManager;
+import com.isekraft.quest.QuestManager;
+import com.isekraft.equipment.EquipSlot;
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.command.CommandRegistryAccess;
@@ -96,6 +100,91 @@ public class IsekaiCommand {
                     ServerPlayerEntity player = ctx.getSource().getPlayer();
                     if (player == null) return 0;
                     PlayerRpgManager.resetSkills(player);
+                    return 1;
+                }))
+
+                // /isekraft codex
+                .then(literal("codex").executes(ctx -> {
+                    ServerPlayerEntity player = ctx.getSource().getPlayer();
+                    if (player == null) return 0;
+                    player.giveItemStack(RarityCodexItem.buildCodexBook());
+                    player.sendMessage(Text.literal("2746 Rarity Codex delivered!").formatted(Formatting.GOLD), false);
+                    return 1;
+                }))
+
+                // /isekraft equipment
+                .then(literal("equipment").executes(ctx -> {
+                    ServerPlayerEntity player = ctx.getSource().getPlayer();
+                    if (player == null) return 0;
+                    EquipmentManager.printEquipmentStatus(player);
+                    return 1;
+                }))
+                // /isekraft unequip <slot>
+                .then(literal("unequip")
+                    .then(literal("glove").executes(ctx -> {
+                        ServerPlayerEntity player = ctx.getSource().getPlayer();
+                        if (player == null) return 0;
+                        EquipmentManager.unequip(player, EquipSlot.GLOVE);
+                        return 1;
+                    }))
+                    .then(literal("necklace").executes(ctx -> {
+                        ServerPlayerEntity player = ctx.getSource().getPlayer();
+                        if (player == null) return 0;
+                        EquipmentManager.unequip(player, EquipSlot.NECKLACE);
+                        return 1;
+                    }))
+                    .then(literal("ring").executes(ctx -> {
+                        ServerPlayerEntity player = ctx.getSource().getPlayer();
+                        if (player == null) return 0;
+                        EquipmentManager.unequip(player, EquipSlot.RING);
+                        return 1;
+                    }))
+                )
+
+                // /isekraft quest
+                .then(literal("quest")
+                    .executes(ctx -> {
+                        ServerPlayerEntity player = ctx.getSource().getPlayer();
+                        if (player == null) return 0;
+                        QuestManager.printQuestStatus(player);
+                        return 1;
+                    })
+                    .then(literal("list").executes(ctx -> {
+                        ServerPlayerEntity player = ctx.getSource().getPlayer();
+                        if (player == null) return 0;
+                        QuestManager.printQuestList(player);
+                        return 1;
+                    }))
+                    .then(literal("accept")
+                        .then(CommandManager.argument("id",
+                            com.mojang.brigadier.arguments.StringArgumentType.word())
+                            .executes(ctx -> {
+                                ServerPlayerEntity player = ctx.getSource().getPlayer();
+                                if (player == null) return 0;
+                                String id = com.mojang.brigadier.arguments.StringArgumentType.getString(ctx, "id");
+                                QuestManager.acceptQuest(player, id);
+                                return 1;
+                            })
+                        )
+                    )
+                    .then(literal("abandon")
+                        .then(CommandManager.argument("id",
+                            com.mojang.brigadier.arguments.StringArgumentType.word())
+                            .executes(ctx -> {
+                                ServerPlayerEntity player = ctx.getSource().getPlayer();
+                                if (player == null) return 0;
+                                String id = com.mojang.brigadier.arguments.StringArgumentType.getString(ctx, "id");
+                                QuestManager.abandonQuest(player, id);
+                                return 1;
+                            })
+                        )
+                    )
+                )
+                // /isekraft turnin
+                .then(literal("turnin").executes(ctx -> {
+                    ServerPlayerEntity player = ctx.getSource().getPlayer();
+                    if (player == null) return 0;
+                    QuestManager.onFetchTurnIn(player);
                     return 1;
                 }))
 

@@ -9,6 +9,8 @@ import com.isekraft.network.ModPackets;
 import com.isekraft.command.IsekaiCommand;
 import com.isekraft.world.DemonLordEvent;
 import com.isekraft.world.KillEventHandler;
+import com.isekraft.rarity.RarityDropHandler;
+import com.isekraft.equipment.EquipmentDropHandler;
 import com.isekraft.world.FirstJoinHandler;
 import com.isekraft.world.ModWorldGen;
 import net.fabricmc.api.ModInitializer;
@@ -33,6 +35,8 @@ public class IseKraftMod implements ModInitializer {
         IsekaiCommand.register();
         DemonLordEvent.register();
         KillEventHandler.register();
+        RarityDropHandler.register();
+        EquipmentDropHandler.register();
         LOGGER.info("[IseKraft] Ready! ✦");
     }
 }

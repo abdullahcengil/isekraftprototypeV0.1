@@ -6,6 +6,10 @@ import com.isekraft.item.KirinBowItem;
 import com.isekraft.item.ShurikenItem;
 import com.isekraft.item.BoomerangItem;
 import com.isekraft.item.WarHammerItem;
+import com.isekraft.rarity.RarityCodexItem;
+import com.isekraft.equipment.EquipmentItem;
+import com.isekraft.equipment.EquipSlot;
+import net.minecraft.entity.effect.StatusEffects;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -103,6 +107,52 @@ public class ModItems {
             "Crushed Demon Core dust.",
             "Craft Demon King armor polish + potions", Formatting.DARK_RED));
 
+    // ── EQUIPMENT: GLOVES ─────────────────────────────────────────────────────
+    public static final EquipmentItem IRON_GAUNTLET = register("iron_gauntlet",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.GLOVE, 1, 1, 2, 0.5f, 0f, null, 0,
+            "Crude iron-plated fingers."));
+    public static final EquipmentItem STEEL_GAUNTLET = register("steel_gauntlet",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.GLOVE, 20, 2, 5, 1.5f, 0f, null, 0,
+            "Forged from hardened steel."));
+    public static final EquipmentItem SHADOW_GAUNTLET = register("shadow_gauntlet",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.GLOVE, 50, 3, 10, 3.0f, 0f, StatusEffects.STRENGTH, 0,
+            "Darkness clings to every strike."));
+
+    // ── EQUIPMENT: NECKLACES ─────────────────────────────────────────────────
+    public static final EquipmentItem BONE_PENDANT = register("bone_pendant",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.NECKLACE, 1, 1, 3, 0f, 0f, null, 0,
+            "A charm carved from monster bone."));
+    public static final EquipmentItem SOUL_PENDANT = register("soul_pendant",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.NECKLACE, 25, 2, 8, 0f, 0f, StatusEffects.REGENERATION, 0,
+            "Glows faintly with captured soul energy."));
+    public static final EquipmentItem DEMON_PENDANT = register("demon_pendant",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.NECKLACE, 60, 3, 15, 0f, 0f, StatusEffects.REGENERATION, 1,
+            "The heartstone of a fallen demon lord."));
+
+    // ── EQUIPMENT: RINGS ─────────────────────────────────────────────────────
+    public static final EquipmentItem COPPER_RING = register("copper_ring",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.RING, 1, 1, 2, 0f, 0.002f, null, 0,
+            "A simple ring, worn smooth."));
+    public static final EquipmentItem RUNE_RING = register("rune_ring",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.RING, 30, 2, 5, 1.0f, 0.004f, null, 0,
+            "Runic script circles the band."));
+    public static final EquipmentItem OVERLORD_RING = register("overlord_ring",
+        new EquipmentItem(new FabricItemSettings().maxCount(1),
+            EquipSlot.RING, 70, 3, 12, 3.0f, 0f, StatusEffects.ABSORPTION, 0,
+            "Once worn by the Demon Overlord."));
+
+    // ── RARITY CODEX ──────────────────────────────────────────────────────────
+    public static final RarityCodexItem RARITY_CODEX = register("rarity_codex",
+        new RarityCodexItem(new FabricItemSettings().maxCount(1)));
+
     // ── CREATIVE TAB ──────────────────────────────────────────────────────────
     public static final RegistryKey<ItemGroup> ISEKRAFT_GROUP_KEY =
         RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(IseKraftMod.MOD_ID, "isekraft_tab"));
@@ -131,6 +181,11 @@ public class ModItems {
             content.add(SOUL_CRYSTAL); content.add(SPIRIT_ESSENCE);
             content.add(MANA_CRYSTAL); content.add(DEMON_CORE);
             content.add(ANCIENT_COIN); content.add(DEMON_DUST);
+            content.add(RARITY_CODEX);
+            // Equipment
+            content.add(IRON_GAUNTLET); content.add(STEEL_GAUNTLET); content.add(SHADOW_GAUNTLET);
+            content.add(BONE_PENDANT); content.add(SOUL_PENDANT); content.add(DEMON_PENDANT);
+            content.add(COPPER_RING); content.add(RUNE_RING); content.add(OVERLORD_RING);
         });
         IseKraftMod.LOGGER.info("IseKraft items registered.");
     }
