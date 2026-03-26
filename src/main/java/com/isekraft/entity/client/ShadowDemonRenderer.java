@@ -9,12 +9,15 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 
 public class ShadowDemonRenderer extends MobEntityRenderer<ShadowDemonEntity, BipedEntityModel<ShadowDemonEntity>> {
-    // Uses Goblin King texture (dark warlord look)
-    private static final Identifier TEX = new Identifier(IseKraftMod.MOD_ID, "textures/entity/goblin_king.png");
+
+    private static final Identifier TEXTURE = new Identifier(IseKraftMod.MOD_ID, "textures/entity/shadow_demon.png");
 
     public ShadowDemonRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new BipedEntityModel<>(ctx.getPart(EntityModelLayers.ZOMBIE)), 1.5f);
+        super(ctx, new BipedEntityModel<>(ctx.getPart(EntityModelLayers.PLAYER)), 0.7f);
     }
 
-    @Override public Identifier getTexture(ShadowDemonEntity e) { return TEX; }
+    @Override
+    public Identifier getTexture(ShadowDemonEntity entity) {
+        return TEXTURE;
+    }
 }
