@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["RFR","FSF","RFR"],
+  "key": {
+    "R": {"item": "isekraft:rune_fragment"},
+    "F": {"item": "minecraft:paper"},
+    "S": {"item": "isekraft:soul_crystal"}
+  },
+  "result": {"item": "isekraft:rarity_codex"}
+}

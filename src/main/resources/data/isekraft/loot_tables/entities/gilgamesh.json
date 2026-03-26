@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "isekraft:demon_lord_crown",
+          "functions": [{"function": "minecraft:set_count", "count": 1}] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "isekraft:overlord_seal",
+          "functions": [{"function": "minecraft:set_count", "count": 1}] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "isekraft:demon_core",
+          "functions": [{"function": "minecraft:set_count", "count": {"min": 5, "max": 10}}] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "isekraft:rune_fragment",
+          "functions": [{"function": "minecraft:set_count", "count": {"min": 12, "max": 20}}] }
+      ]
+    }
+  ]
+}
